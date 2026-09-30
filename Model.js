@@ -135,7 +135,7 @@ function openMeteoForecastDays(dailyForecastReport, todayString) {
   if (!daily || !daily.time) return []
 
   var result = []
-  for (var i = 0; i < daily.time.length && result.length < 3; ++i) {
+  for (var i = 0; i < daily.time.length && result.length < 9; ++i) {
     var date = daily.time[i]
     if (!isFutureForecastDate(date, todayString)) continue
 

@@ -181,7 +181,7 @@ Panel {
       + "&longitude=" + encodeURIComponent(String(lon))
       + "&daily=weather_code,temperature_2m_max,temperature_2m_min"
       + "&current=temperature_2m,apparent_temperature,relative_humidity_2m,wind_speed_10m,weather_code,is_day"
-      + "&forecast_days=4"
+      + "&forecast_days=10"
       + "&timezone=auto"
     dailyForecastProc.command = ["curl", "-fsS", "--max-time", "5", url]
     dailyForecastProc.running = true
@@ -808,17 +808,22 @@ Panel {
         opacity: 0.12
       }
 
-      // ---- Forecast row: each cell has the day icon left of a day-name + hi/lo column.
+      // ---- Forecast grid: each cell has the day icon left of a day-name + hi/lo column.
       //      Wrapped in an Item so the block of cells can be centered within the popup.
+      //      Grid (3 columns) instead of a single Row so a longer forecast
+      //      (more than 3 days) wraps into extra rows instead of overflowing
+      //      the popup width.
       Item {
         visible: root.forecastDays.length > 0
         width: parent.width
         height: forecastRow.height
 
-        Row {
+        Grid {
           id: forecastRow
           anchors.horizontalCenter: parent.horizontalCenter
-          spacing: Style.space(44)
+          columns: 3
+          columnSpacing: Style.space(44)
+          rowSpacing: Style.space(24)
 
           Repeater {
             model: root.forecastDays
