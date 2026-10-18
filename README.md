@@ -1,5 +1,7 @@
 # Weather for the Omarchy bar, 9-day forecast
 
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-support-FF5E5B?logo=ko-fi&logoColor=white)](https://ko-fi.com/mike_g)
+
 The stock Omarchy weather widget with a longer forecast: the popup shows nine
 days in a 3 × 3 grid instead of three in a row.
 
